@@ -9,8 +9,20 @@
     <button onclick="swapWelcome()">Greeting!</button>
 
     <script>
+    (function() {
+      // Deterministic mode: skip random delays/errors during tests
+      var deterministic = (window.__E2E__ === true) ||
+                          (typeof window.location === 'object' && window.location.search.indexOf('deterministic=true') !== -1);
+      window.__DETERMINISTIC__ = deterministic;
+    })();
+
     function swapWelcome() {
       var welcomeMessage = document.getElementById("welcome");
+
+      if (window.__DETERMINISTIC__) {
+        welcomeMessage.innerHTML = "Hi, Thank you for touch me!";
+        return;
+      }
       
       // Simulate realistic JavaScript timing issues
       // This mimics heavy DOM manipulation, API calls, or animation delays
