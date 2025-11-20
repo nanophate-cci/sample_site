@@ -9,6 +9,9 @@
     <button onclick="swapWelcome()">Greeting!</button>
 
     <script>
+    // Enable deterministic behavior in tests via query param
+    var __DETERMINISTIC__ = new URLSearchParams(window.location.search).get('deterministic') === '1';
+
     function swapWelcome() {
       var welcomeMessage = document.getElementById("welcome");
       
@@ -20,12 +23,12 @@
       // - Network requests completing at different times
       // - Heavy computation or DOM manipulation
       // - Animation/transition timing issues
-      var delay = Math.random() < 0.3 ? Math.random() * 200 : 0;
+      var delay = __DETERMINISTIC__ ? 0 : (Math.random() < 0.3 ? Math.random() * 200 : 0);
       
       setTimeout(function() {
         // Simulate occasional JavaScript errors that happen in production
         // This represents real issues like race conditions, undefined variables, etc.
-        if (Math.random() < 0.05) {
+        if (!__DETERMINISTIC__ && Math.random() < 0.05) {
           // Don't update the DOM - simulates a JS error that prevents execution
           console.error("Simulated JavaScript error");
           return;
