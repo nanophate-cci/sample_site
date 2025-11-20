@@ -9,6 +9,8 @@
     <button onclick="swapWelcome()">Greeting!</button>
 
     <script>
+    // Deterministic test flag from query param (?det=1)
+    (function(){ try { var params = new URLSearchParams(window.location.search); if (params.get('det') === '1') { window.DETERMINISTIC_TESTS = true; } } catch(e) {} })();
     function swapWelcome() {
       var welcomeMessage = document.getElementById("welcome");
       
@@ -20,12 +22,12 @@
       // - Network requests completing at different times
       // - Heavy computation or DOM manipulation
       // - Animation/transition timing issues
-      var delay = Math.random() < 0.3 ? Math.random() * 200 : 0;
+       var delay = (!window.DETERMINISTIC_TESTS && Math.random() < 0.3) ? Math.random() * 200 : 0;
       
       setTimeout(function() {
         // Simulate occasional JavaScript errors that happen in production
         // This represents real issues like race conditions, undefined variables, etc.
-        if (Math.random() < 0.05) {
+        if (!window.DETERMINISTIC_TESTS && Math.random() < 0.05) {
           // Don't update the DOM - simulates a JS error that prevents execution
           console.error("Simulated JavaScript error");
           return;
