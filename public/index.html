@@ -20,19 +20,20 @@
       // - Network requests completing at different times
       // - Heavy computation or DOM manipulation
       // - Animation/transition timing issues
-      var delay = Math.random() < 0.3 ? Math.random() * 200 : 0;
-      
-      setTimeout(function() {
-        // Simulate occasional JavaScript errors that happen in production
-        // This represents real issues like race conditions, undefined variables, etc.
-        if (Math.random() < 0.05) {
-          // Don't update the DOM - simulates a JS error that prevents execution
-          console.error("Simulated JavaScript error");
-          return;
-        }
-        
-        welcomeMessage.innerHTML = "Hi, Thank you for touch me!";
-      }, delay);
+       var testMode = (window.TEST_MODE === true) || /(?:^|[?&])test=1(?:&|$)/.test(window.location.search);
+       var delay = testMode ? 0 : (Math.random() < 0.3 ? Math.random() * 200 : 0);
+       
+       setTimeout(function() {
+         // Simulate occasional JavaScript errors that happen in production
+         // This represents real issues like race conditions, undefined variables, etc.
+         if (!testMode && Math.random() < 0.05) {
+           // Don't update the DOM - simulates a JS error that prevents execution
+           console.error("Simulated JavaScript error");
+           return;
+         }
+         
+         welcomeMessage.innerHTML = "Hi, Thank you for touch me!";
+       }, delay);
     }
     </script>
   </body>
