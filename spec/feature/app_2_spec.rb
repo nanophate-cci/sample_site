@@ -2,101 +2,101 @@ require 'spec_helper'
 
 describe 'app_2', type: :feature, js: true do
   it 'app_2 clicks greeting to change welcome message' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 1' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 2' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 3' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 4' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 5' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 6' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 7' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 8' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 9' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 
   it 'app_2 clicks greeting to change welcome message 10' do
-    visit '/'
+    visit '/?test=true'
     expect(page).to have_content('Hello, Thank you for accessing to this website.')
-    expect(page).not_to have_content('Hi, Thank you for touch me!')
+    expect(page).to have_no_content('Hi, Thank you for touch me!')
     click_on 'Greeting!'
-    expect(page).not_to have_content('Hello, Thank you for accessing to this website.')
+    expect(page).to have_no_content('Hello, Thank you for accessing to this website.')
     expect(page).to have_content('Hi, Thank you for touch me!')
   end
 end
