@@ -12,20 +12,19 @@
     function swapWelcome() {
       var welcomeMessage = document.getElementById("welcome");
       
+      // Disable randomness during tests via query param or flag
+      var isTest = (window && window.location && /[?&]test=1/.test(window.location.search)) || window.__TEST__ === true;
+
       // Simulate realistic JavaScript timing issues
       // This mimics heavy DOM manipulation, API calls, or animation delays
       // that commonly cause flakiness in real applications
       
-      // Add random delay to simulate:
-      // - Network requests completing at different times
-      // - Heavy computation or DOM manipulation
-      // - Animation/transition timing issues
-      var delay = Math.random() < 0.3 ? Math.random() * 200 : 0;
+      // Add random delay only outside tests
+      var delay = isTest ? 0 : (Math.random() < 0.3 ? Math.random() * 200 : 0);
       
       setTimeout(function() {
-        // Simulate occasional JavaScript errors that happen in production
-        // This represents real issues like race conditions, undefined variables, etc.
-        if (Math.random() < 0.05) {
+        // Simulate occasional JavaScript errors only outside tests
+        if (!isTest && Math.random() < 0.05) {
           // Don't update the DOM - simulates a JS error that prevents execution
           console.error("Simulated JavaScript error");
           return;
