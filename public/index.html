@@ -16,16 +16,19 @@
       // This mimics heavy DOM manipulation, API calls, or animation delays
       // that commonly cause flakiness in real applications
       
+      // Under tests, disable randomness for determinism
+      var isTest = !!window.__TEST__;
+
       // Add random delay to simulate:
       // - Network requests completing at different times
       // - Heavy computation or DOM manipulation
       // - Animation/transition timing issues
-      var delay = Math.random() < 0.3 ? Math.random() * 200 : 0;
+      var delay = isTest ? 0 : (Math.random() < 0.3 ? Math.random() * 200 : 0);
       
       setTimeout(function() {
         // Simulate occasional JavaScript errors that happen in production
         // This represents real issues like race conditions, undefined variables, etc.
-        if (Math.random() < 0.05) {
+        if (!isTest && Math.random() < 0.05) {
           // Don't update the DOM - simulates a JS error that prevents execution
           console.error("Simulated JavaScript error");
           return;
