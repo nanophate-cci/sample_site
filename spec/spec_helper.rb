@@ -16,6 +16,6 @@ RSpec.configure do |config|
 
   # Disable client-side randomness during JS specs
   config.before(:each, js: true) do
-    page.execute_script('window.__TEST__ = true')
+    page.execute_script('window.name = "__TEST__"; window.__TEST__ = true')
   end
 end

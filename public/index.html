@@ -17,7 +17,7 @@
       // that commonly cause flakiness in real applications
       
       // Under tests, disable randomness for determinism
-      var isTest = !!window.__TEST__;
+      var isTest = (window.name === "__TEST__") || !!window.__TEST__;
 
       // Add random delay to simulate:
       // - Network requests completing at different times
