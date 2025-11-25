@@ -2,11 +2,14 @@ require 'rspec'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
+ENV['RACK_ENV'] ||= 'test'
+
 Capybara.app = eval("Rack::Builder.new {( " + File.read(File.dirname(__dir__) + '/config.ru') + "\n )}")
 
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.server = :webrick
 Capybara.default_max_wait_time = 5
+Capybara.raise_server_errors = true
 
 RSpec.configure do |config|
   config.mock_with :rspec
