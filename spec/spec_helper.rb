@@ -2,7 +2,8 @@ require 'rspec'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
-Capybara.app = eval("Rack::Builder.new {( " + File.read(File.dirname(__dir__) + '/config.ru') + "\n )}")
+ ENV['RACK_ENV'] ||= 'test'
+ Capybara.app = eval("Rack::Builder.new {( " + File.read(File.dirname(__dir__) + '/config.ru') + "\n )}")
 
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.server = :webrick
