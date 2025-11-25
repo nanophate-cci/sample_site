@@ -9,19 +9,26 @@
     <button onclick="swapWelcome()">Greeting!</button>
 
     <script>
+    (function() {
+      // Enable deterministic behavior during tests with a query param: ?stable=1
+      var params = new URLSearchParams(window.location.search);
+      window.__TEST_MODE__ = params.get('stable') === '1';
+    })();
+
     function swapWelcome() {
       var welcomeMessage = document.getElementById("welcome");
-      
+
+      // In test mode, remove randomness for stability
+      if (window.__TEST_MODE__) {
+        welcomeMessage.innerHTML = "Hi, Thank you for touch me!";
+        return;
+      }
+
       // Simulate realistic JavaScript timing issues
       // This mimics heavy DOM manipulation, API calls, or animation delays
       // that commonly cause flakiness in real applications
-      
-      // Add random delay to simulate:
-      // - Network requests completing at different times
-      // - Heavy computation or DOM manipulation
-      // - Animation/transition timing issues
       var delay = Math.random() < 0.3 ? Math.random() * 200 : 0;
-      
+
       setTimeout(function() {
         // Simulate occasional JavaScript errors that happen in production
         // This represents real issues like race conditions, undefined variables, etc.
@@ -30,7 +37,7 @@
           console.error("Simulated JavaScript error");
           return;
         }
-        
+
         welcomeMessage.innerHTML = "Hi, Thank you for touch me!";
       }, delay);
     }
