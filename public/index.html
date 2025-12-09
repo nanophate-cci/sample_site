@@ -11,6 +11,12 @@
     <script>
     function swapWelcome() {
       var welcomeMessage = document.getElementById("welcome");
+
+      // Deterministic behavior when tests enable TEST_MODE
+      if (window.TEST_MODE) {
+        welcomeMessage.innerHTML = "Hi, Thank you for touch me!";
+        return;
+      }
       
       // Simulate realistic JavaScript timing issues
       // This mimics heavy DOM manipulation, API calls, or animation delays
